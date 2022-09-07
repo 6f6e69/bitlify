@@ -5,9 +5,6 @@ import requests
 from urllib.parse import urlparse
 
 
-load_dotenv()
-
-
 def shorten_link(token: str, url: str) -> str:
     response = requests.post(
         'https://api-ssl.bitly.com/v4/bitlinks',
@@ -40,6 +37,7 @@ def is_bitlink(token: str, url: str) -> bool:
 
 
 if __name__ == '__main__':
+    load_dotenv()
     bitly_api_key = os.getenv('BITLY_API_KEY')
     parser = argparse.ArgumentParser(
         description="""Converts link to bitly short link.
